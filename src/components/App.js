@@ -12,8 +12,8 @@ const App = () => {
       .catch((err) => setError("An error occurred: "));
   }, []);
 
-  if (!data) return <h1>Loading...</h1>;
   if (error) return <>{error}</>;
+  if (!data) return <h1>Loading...</h1>;
 
   return (
     <div>
