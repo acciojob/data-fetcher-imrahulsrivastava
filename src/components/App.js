@@ -3,15 +3,17 @@ import "./../styles/App.css";
 
 const App = () => {
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch("https://dummyjson.com/products")
       .then((res) => res.json())
       .then((data) => setData(data))
-      .catch((err) => console.error("An error occurred: ", err));
+      .catch((err) => setError("An error occurred: "));
   }, []);
 
   if (!data) return <h1>Loading...</h1>;
+  if (error) return <>{error}</>;
 
   return (
     <div>
