@@ -8,12 +8,17 @@ const App = () => {
     fetch("https://dummyjson.com/products")
       .then((res) => res.json())
       .then((data) => setData(data))
-      .catch((err) => console.error("Error fetching data:", err));
+      .catch((err) => console.error("An error occurred: ", err));
   }, []);
 
   if (!data) return <h1>Loading...</h1>;
 
-  return <pre>{JSON.stringify(data, null, 2)}</pre>;
+  return (
+    <div>
+      <h1>Data Fetched from API</h1>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  );
 };
 
 export default App;
